@@ -5,12 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ishop</title>
+    <link rel="stylesheet" href="Ishop.css" />
   </head>
   <body>
+    <div id="shop"></div>
     <!-- Создать проект ishop (интернет-магазин) в папке ishop.
     Задать массивом список товаров в интернет-магазине, по каждому товару должны храниться как минимум название, цена, URL фотографии, сколько единиц товара осталось на складе.
     Написать React-компонент, отображающий таблицу с этим списком товаров, в таблице должны отображаться фотографии товаров тегом <img>. Компонент должен получать название магазина и массив товаров через props.
     Задать типы для props компонента.
     При разработке компонента максимально использовать forEach и другие методы обработки массивов. -->
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="idhop.js"></script>
+    <script>
+      let shopName = "ISHOP";
+      let goods = [
+        {
+          productname: "Наименование",
+          productcode: 0,
+          productprice: "Цена",
+          producturl: "Фото",
+          productremain: "Остаток на складе",
+        },
+        {
+          productname: "Футболка синяя",
+          productcode: 1,
+          productprice: 150,
+          producturl:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blue_Tshirt.jpg/250px-Blue_Tshirt.jpg",
+          productremain: "10",
+        },
+        {
+          productname: "Футболка черная",
+          productcode: 2,
+          productprice: 150,
+          producturl:
+            "https://www.fatline.com.ua/images/products/backs/const/m_f_1.png",
+          productremain: "20",
+        },
+      ];
+
+      ReactDOM.render(
+        React.createElement(ShopComponent, {
+          shopName: shopName,
+          product: goods,
+        }),
+        document.getElementById("shop")
+      );
+    </script>
   </body>
 </html>
