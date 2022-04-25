@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="filter.css" />
+  </head>
+  <body>
+    <div id="filter"></div>
+    <!-- Создать проект filter (фильтр) в папке filter.
+Компоненту в props передаётся массив строк. Он отображает их в виде вертикального прокручивающегося списка.
+Выше списка отображается поле текстового ввода, птичка (checkbox) и кнопка сброса.
+При вводе текста в поле в списке остаются только те строки, которые содержат введённый текст.
+При установке птички строки отображаются в алфавитном порядке, при снятии — в том же порядке, в каком они расположены в массиве.
+При нажатии кнопки "сброс" состояние птички и текстового поля сбрасывается, список приходит в первоначальное состояние.
+В качестве списка слов можно использовать следующие:
+['california', 'everything', 'aboveboard', 'washington', 'basketball', 'weathering', 'characters', 'literature', 'contraband', 'appreciate']; -->
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="filter.js"></script>
+    <script>
+      let arr = [
+        "california",
+        "everything",
+        "aboveboard",
+        "washington",
+        "basketball",
+        "weathering",
+        "characters",
+        "literature",
+        "contraband",
+        "appreciate",
+      ];
+
+      ReactDOM.render(
+        React.createElement(filterComponent, { testArr: arr }),
+        document.getElementById("filter")
+      );
+    </script>
+  </body>
+</html>

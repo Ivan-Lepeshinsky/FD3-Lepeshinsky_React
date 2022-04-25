@@ -1,0 +1,12 @@
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+}
+
+#textarea {
+  width: 200px;
+  height: 100px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
