@@ -7,52 +7,62 @@ let filterComponent = React.createClass({
 
   getInitialState: function () {
     return {
-      startArr: this.props.testArr,
       currentArr: this.props.testArr,
-      unsortArr: null,
       alphabet: false,
+      sample: "",
     };
   },
 
   letterSort: function (EO) {
-    let sampl = EO.target.value;
-    this.setState({ sample: sampl });
-    let arr = this.state.startArr.filter((word) => {
-      if (word.includes(sampl)) return word;
-    });
-    this.setState({ currentArr: arr });
+    this.setState({ sample: EO.target.value }, this.arrSort);
   },
 
   alphabetSort: function () {
-    if (this.state.alphabet == false) {
-      let arr = this.state.currentArr.sort();
-      this.setState({
-        unsortArr: this.state.currentArr,
-        alphabet: true,
-        currentArr: arr,
-      });
-    } else {
-      let arr = this.state.unsortArr;
-      this.setState({
-        alphabet: false,
-        currentArr: arr,
+    this.state.alphabet == false
+      ? this.setState({ alphabet: true }, this.arrSort)
+      : this.setState({ alphabet: false }, this.arrSort);
+  },
+  reset: function () {
+    this.setState({ alphabet: false, sample: "" }, this.arrSort);
+  },
+
+  arrSort: function () {
+    let arr = this.props.testArr.slice();
+    let sample = this.state.sample;
+    let sort = this.state.alphabet;
+    if (sort) {
+      arr = arr.sort();
+    }
+    if (sample) {
+      arr = arr.filter((word) => {
+        if (word.includes(sample)) return word;
       });
     }
+    this.setState({ currentArr: arr });
   },
 
   render: function () {
     let checkBox = React.DOM.input({
       type: "checkbox",
       id: "check",
-      defaultChecked: false,
+      checked: this.state.alphabet,
       onChange: this.alphabetSort,
     });
-    let input = React.DOM.input({ id: "input", onChange: this.letterSort });
-    let button = React.DOM.button({ id: "button" }, "сброс");
-    let textArea = React.DOM.textarea({
-      id: "textarea",
-      value: this.state.currentArr.join("\n"),
+    let input = React.DOM.input({
+      id: "input",
+      value: this.state.sample,
+      onChange: this.letterSort,
     });
+    let button = React.DOM.button(
+      { id: "button", onClick: this.reset },
+      "сброс"
+    );
+    let textArea = React.DOM.div(
+      {
+        id: "textarea",
+      },
+      this.state.currentArr.join("\n")
+    );
 
     return React.DOM.div(
       { className: "filter" },
