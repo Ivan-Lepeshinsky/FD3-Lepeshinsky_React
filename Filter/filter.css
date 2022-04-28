@@ -5,8 +5,9 @@
 }
 
 #textarea {
-  width: 200px;
-  height: 100px;
+  white-space: pre;
   margin-left: 20px;
   margin-top: 5px;
+  padding: 10px;
+  border: 1px solid black;
 }
