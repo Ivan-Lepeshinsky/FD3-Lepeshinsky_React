@@ -16,6 +16,7 @@ let filterComponent = React.createClass({
 
   letterSort: function (EO) {
     let sampl = EO.target.value;
+    this.setState({ sample: sampl });
     let arr = this.state.startArr.filter((word) => {
       if (word.includes(sampl)) return word;
     });
@@ -24,21 +25,17 @@ let filterComponent = React.createClass({
 
   alphabetSort: function () {
     if (this.state.alphabet == false) {
-      this.setState((prevState, props) => {
-        return { unsortArr: prevState.currentArr };
-      });
-      this.setState((prevState, props) => {
-        return { alphabet: (prevState.alphabet = true) };
-      });
-      this.setState((prevState, props) => {
-        return { currentArr: prevState.currentArr.sort() };
+      let arr = this.state.currentArr.sort();
+      this.setState({
+        unsortArr: this.state.currentArr,
+        alphabet: true,
+        currentArr: arr,
       });
     } else {
-      this.setState((prevState, props) => {
-        return { alphabet: (prevState.alphabet = false) };
-      });
-      this.setState((prevState, props) => {
-        return { currentArr: prevState.unsortArr };
+      let arr = this.state.unsortArr;
+      this.setState({
+        alphabet: false,
+        currentArr: arr,
       });
     }
   },
