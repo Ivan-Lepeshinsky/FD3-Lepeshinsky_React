@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ishop</title>
+    <link rel="stylesheet" href="Ishop.css" />
+    <link rel="stylesheet" href="igood.css">
+  </head>
+  <body>
+    <div id="shop"></div>
+    <!-- Создать проект ishop (интернет-магазин) в папке ishop.
+    Задать массивом список товаров в интернет-магазине, по каждому товару должны храниться как минимум название, цена, URL фотографии, сколько единиц товара осталось на складе.
+    Написать React-компонент, отображающий таблицу с этим списком товаров, в таблице должны отображаться фотографии товаров тегом <img>. Компонент должен получать название магазина и массив товаров через props.
+    Задать типы для props компонента.
+    При разработке компонента максимально использовать forEach и другие методы обработки массивов. -->
+
+    <!-- Должно быть описано два компонента — «Магазин» и «Товар». Один из товаров
+    может быть сделан «выбранным» щелчком в любое место строки. Строка
+    выбранного товара выделяется цветом. В каждой строке с товаром — кнопка
+    «удалить». По нажатию кнопки «удалить» у пользователя запрашивается
+    подтверждения удаления (confirm) и товар удаляется. Можно удалить любой
+    товар, не обязательно выделенный; после удаления товара, выделенный товар
+    остаётся выделенным. -->
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+    <script src="idhop.js"></script>
+    <script src="igood.js"></script>
+    <script>
+      let shopName = "ISHOP";
+      let goods = [
+        {
+          productname: "Футболка синяя",
+          productcode: 1,
+          productprice: 150,
+          producturl:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blue_Tshirt.jpg/250px-Blue_Tshirt.jpg",
+          productremain: 10,
+        },
+        {
+          productname: "Футболка черная",
+          productcode: 2,
+          productprice: 150,
+          producturl:
+            "https://www.fatline.com.ua/images/products/backs/const/m_f_1.png",
+          productremain: 20,
+        },
+        {
+          productname: "Футболка красная",
+          productcode: 3,
+          productprice: 150,
+          producturl:
+            "https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/40023_Detskaya_krasnaya_futbolka.jpg",
+          productremain: 20,
+        },
+        {
+          productname: "Футболка белая",
+          productcode: 4,
+          productprice: 150,
+          producturl:
+            "https://forintex.by/images/forintex/product/resized/futbolka-m-1-belaya95-small.jpg",
+          productremain: 20,
+        },
+      ];
+
+      ReactDOM.render(
+        React.createElement(ShopComponent, {
+          shopName: shopName,
+          product: goods,
+        }),
+        document.getElementById("shop")
+      );
+    </script>
+  </body>
+</html>
