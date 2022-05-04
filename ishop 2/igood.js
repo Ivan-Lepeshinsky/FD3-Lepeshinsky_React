@@ -18,10 +18,10 @@ let shopProdact = React.createClass({
   },
 
   itemDelete: function (EO) {
+    EO.stopPropagation();
     confirm(`Удалить товар ${this.props.productname}`)
       ? this.props.cbitemDelete(this.props.productcode)
       : null;
-    EO.stopPropagation();
   },
 
   render: function () {

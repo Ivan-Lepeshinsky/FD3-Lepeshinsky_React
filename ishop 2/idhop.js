@@ -42,7 +42,8 @@ let ShopComponent = React.createClass({
       React.DOM.td({ className: "productName" }, "Наименование"),
       React.DOM.td({ className: "productPrice" }, "Цена"),
       React.DOM.td({ className: "productURL" }, "Фото"),
-      React.DOM.td({ className: "productRemain" }, "Остаток на складе")
+      React.DOM.td({ className: "productRemain" }, "Остаток на складе"),
+      React.DOM.td({ className: "productRemain" }, "Управление")
     );
 
     let cards = this.props.product.map((e) =>
