@@ -10,7 +10,6 @@ let shopProdact = React.createClass({
     cbitemSelected: React.PropTypes.func.isRequired,
     itemSelected: React.PropTypes.number,
     cbitemDelete: React.PropTypes.func.isRequired,
-    itemDelete: React.PropTypes.array.isRequired,
   },
 
   itemSelected: function (EO) {
@@ -25,33 +24,29 @@ let shopProdact = React.createClass({
   },
 
   render: function () {
-    if (this.props.itemDelete.includes(this.props.productcode)) {
-      return null;
-    } else {
-      return React.DOM.tr(
-        {
-          className:
-            this.props.itemSelected === this.props.productcode
-              ? "shopCard select"
-              : "shopCard",
-          key: this.props.productcode,
-          onClick: this.itemSelected,
-        },
-        React.DOM.td({ className: "productName" }, this.props.productname),
-        React.DOM.td({ className: "productPrice" }, this.props.productprice),
-        React.DOM.td(
-          { className: "productURL" },
-          React.DOM.img({ className: "productImg", src: this.props.producturl })
-        ),
-        React.DOM.td({ className: "productRemain" }, this.props.productremain),
-        React.DOM.td(
-          { className: "control" },
-          React.DOM.button(
-            { className: "delete", onClick: this.itemDelete },
-            "Удалить"
-          )
+    return React.DOM.tr(
+      {
+        className:
+          this.props.itemSelected === this.props.productcode
+            ? "shopCard select"
+            : "shopCard",
+        key: this.props.productcode,
+        onClick: this.itemSelected,
+      },
+      React.DOM.td({ className: "productName" }, this.props.productname),
+      React.DOM.td({ className: "productPrice" }, this.props.productprice),
+      React.DOM.td(
+        { className: "productURL" },
+        React.DOM.img({ className: "productImg", src: this.props.producturl })
+      ),
+      React.DOM.td({ className: "productRemain" }, this.props.productremain),
+      React.DOM.td(
+        { className: "control" },
+        React.DOM.button(
+          { className: "delete", onClick: this.itemDelete },
+          "Удалить"
         )
-      );
-    }
+      )
+    );
   },
 });

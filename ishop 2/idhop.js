@@ -16,16 +16,19 @@ let ShopComponent = React.createClass({
 
   getInitialState: function () {
     return {
+      goodsAvailiable: this.props.product,
       itemSelected: null,
-      itemDelete: [],
     };
   },
 
   cbitemDelete: function (code) {
-    let arr = this.state.itemDelete.slice();
-    arr.push(code);
-    arr.sort();
-    this.setState({ itemDelete: arr });
+    let arr = this.state.goodsAvailiable.slice();
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].productcode == code) {
+        arr.splice(i, 1);
+      }
+    }
+    this.setState({ goodsAvailiable: arr });
   },
 
   cbitemSelected: function (code) {
@@ -46,7 +49,7 @@ let ShopComponent = React.createClass({
       React.DOM.td({ className: "productRemain" }, "Управление")
     );
 
-    let cards = this.props.product.map((e) =>
+    let cards = this.state.goodsAvailiable.map((e) =>
       React.createElement(shopProdact, {
         key: e.productcode,
         productcode: e.productcode,
@@ -57,7 +60,6 @@ let ShopComponent = React.createClass({
         cbitemSelected: this.cbitemSelected,
         itemSelected: this.state.itemSelected,
         cbitemDelete: this.cbitemDelete,
-        itemDelete: this.state.itemDelete,
       })
     );
 
