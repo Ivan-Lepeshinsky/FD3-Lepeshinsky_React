@@ -22,12 +22,7 @@ let ShopComponent = React.createClass({
   },
 
   cbitemDelete: function (code) {
-    let arr = this.state.goodsAvailiable.slice();
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].productcode == code) {
-        arr.splice(i, 1);
-      }
-    }
+    let arr = this.state.goodsAvailiable.filter((e) => e.productcode != code);
     this.setState({ goodsAvailiable: arr });
   },
 
