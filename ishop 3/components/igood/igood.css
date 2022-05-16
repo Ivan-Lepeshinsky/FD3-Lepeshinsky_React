@@ -1,0 +1,9 @@
+.select {
+  background-color: aqua;
+}
+button {
+  width: 120px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 5px;
+}

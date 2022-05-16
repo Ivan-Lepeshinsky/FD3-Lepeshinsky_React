@@ -1,0 +1,30 @@
+[
+  {
+    "productname": "Футболка синяя",
+    "productcode": 0,
+    "productprice": 150,
+    "producturl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blue_Tshirt.jpg/250px-Blue_Tshirt.jpg",
+    "productremain": 10
+  },
+  {
+    "productname": "Футболка черная",
+    "productcode": 1,
+    "productprice": 150,
+    "producturl": "https://www.fatline.com.ua/images/products/backs/const/m_f_1.png",
+    "productremain": 20
+  },
+  {
+    "productname": "Футболка красная",
+    "productcode": 2,
+    "productprice": 150,
+    "producturl": "https://prostomayki.com.ua/components/com_virtuemart/shop_image/product/40023_Detskaya_krasnaya_futbolka.jpg",
+    "productremain": 30
+  },
+  {
+    "productname": "Футболка белая",
+    "productcode": 3,
+    "productprice": 150,
+    "producturl": "https://forintex.by/images/forintex/product/resized/futbolka-m-1-belaya95-small.jpg",
+    "productremain": 40
+  }
+]

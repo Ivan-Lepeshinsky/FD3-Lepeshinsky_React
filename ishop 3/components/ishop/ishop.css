@@ -1,0 +1,14 @@
+td {
+  border: 1px solid black;
+  width: 100px;
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+thead > tr > td {
+  border: none;
+}
