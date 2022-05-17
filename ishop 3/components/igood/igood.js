@@ -12,13 +12,14 @@ class Igood extends React.Component {
     cbitemSelected: PropTypes.func.isRequired,
     itemSelected: PropTypes.number,
     itemEdit: PropTypes.bool.isRequired,
+    itemChanged: PropTypes.bool.isRequired,
     cbitemDelete: PropTypes.func.isRequired,
     cbitemEdit: PropTypes.func.isRequired,
   };
 
   itemSelected = (EO) => {
     this.props.cbitemSelected(this.props.productcode);
-    this.props.itemEdit == true && this.props.cbitemEdit(false);
+    EO.target.className != "add" && this.props.cbitemEdit(false);
   };
 
   itemDelete = (EO) => {
@@ -28,7 +29,7 @@ class Igood extends React.Component {
       : null;
   };
 
-  itemEdit = (EO) => {
+  itemEdit = () => {
     this.props.cbitemEdit(true);
   };
   render() {
@@ -51,14 +52,14 @@ class Igood extends React.Component {
         <td className="control">
           <button
             className="add"
-            disabled={this.props.itemEdit == true ? "disabled" : false}
+            disabled={this.props.itemChanged == true ? "disabled" : false}
             onClick={this.itemEdit}
           >
             Редактировать
           </button>
           <button
             className="delete"
-            disabled={this.props.itemEdit == true ? "disabled" : false}
+            disabled={this.props.itemChanged == true ? "disabled" : false}
             onClick={this.itemDelete}
           >
             Удалить

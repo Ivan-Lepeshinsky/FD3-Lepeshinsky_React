@@ -22,6 +22,7 @@ class Ishop extends React.Component {
     goodsAvailiable: this.props.product,
     itemSelected: null,
     itemEdit: false,
+    itemChanged: false,
   };
 
   cbitemDelete = (code) => {
@@ -35,6 +36,9 @@ class Ishop extends React.Component {
 
   cbitemEdit = (code) => {
     this.setState({ itemEdit: code });
+  };
+  cbitemChanged = (code) => {
+    this.setState({ itemChanged: code });
   };
   render() {
     let tableHead = (
@@ -64,6 +68,7 @@ class Ishop extends React.Component {
         cbitemDelete={this.cbitemDelete}
         cbitemEdit={this.cbitemEdit}
         itemEdit={this.state.itemEdit}
+        itemChanged={this.state.itemChanged}
       />
     ));
 
@@ -72,7 +77,9 @@ class Ishop extends React.Component {
         itemSelected={this.state.itemSelected}
         availProductInfo={this.state.goodsAvailiable[this.state.itemSelected]}
         itemEdit={this.state.itemEdit}
+        itemChanged={this.state.itemChanged}
         cbitemEdit={this.cbitemEdit}
+        cbitemChanged={this.cbitemEdit}
       />
     );
 
@@ -85,8 +92,8 @@ class Ishop extends React.Component {
             {cards}
           </tbody>
         </table>
-        <button disabled={this.state.itemEdit == true ? "disabled" : false}>
-          добавить товар
+        <button disabled={this.state.itemChanged == true ? "disabled" : false}>
+          Новый товар
         </button>
         <div>{productInfo}</div>
       </div>
