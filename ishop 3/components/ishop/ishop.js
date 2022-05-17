@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Igood from "../igood/igood";
+import Productinfo from "../info/prodInfo";
 import "./ishop.css";
 
 class Ishop extends React.Component {
@@ -17,7 +18,11 @@ class Ishop extends React.Component {
     ),
   };
 
-  state = { goodsAvailiable: this.props.product, itemSelected: null };
+  state = {
+    goodsAvailiable: this.props.product,
+    itemSelected: null,
+    itemEdit: false,
+  };
 
   cbitemDelete = (code) => {
     let arr = this.state.goodsAvailiable.filter((e) => e.productcode != code);
@@ -26,6 +31,10 @@ class Ishop extends React.Component {
 
   cbitemSelected = (code) => {
     this.setState({ itemSelected: code });
+  };
+
+  cbitemEdit = (code) => {
+    this.setState({ itemEdit: code });
   };
   render() {
     let tableHead = (
@@ -53,24 +62,19 @@ class Ishop extends React.Component {
         cbitemSelected={this.cbitemSelected}
         itemSelected={this.state.itemSelected}
         cbitemDelete={this.cbitemDelete}
+        cbitemEdit={this.cbitemEdit}
+        itemEdit={this.state.itemEdit}
       />
     ));
 
-    let productInfo =
-      this.state.itemSelected != null ? (
-        <div>
-          <h3>{this.props.product[this.state.itemSelected].productname}</h3>
-          <span>
-            Название:
-            {this.props.product[this.state.itemSelected].productname}
-          </span>
-          <br />
-          <span>
-            Остаток:
-            {this.props.product[this.state.itemSelected].productremain}
-          </span>
-        </div>
-      ) : null;
+    let productInfo = (
+      <Productinfo
+        itemSelected={this.state.itemSelected}
+        availProductInfo={this.state.goodsAvailiable[this.state.itemSelected]}
+        itemEdit={this.state.itemEdit}
+        cbitemEdit={this.cbitemEdit}
+      />
+    );
 
     return (
       <div>
@@ -81,7 +85,9 @@ class Ishop extends React.Component {
             {cards}
           </tbody>
         </table>
-        <button disabled="disabled">добавить товар</button>
+        <button disabled={this.state.itemEdit == true ? "disabled" : false}>
+          добавить товар
+        </button>
         <div>{productInfo}</div>
       </div>
     );
