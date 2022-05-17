@@ -5,16 +5,19 @@ import "./prodInfo.css";
 class Productinfo extends React.Component {
   static propTypes = {
     itemSelected: PropTypes.number,
-    availProductInfo: PropTypes.shape({
-      productname: PropTypes.string.isRequired,
-      productcode: PropTypes.number.isRequired,
-      productprice: PropTypes.number.isRequired,
-      producturl: PropTypes.string.isRequired,
-      productremain: PropTypes.number.isRequired,
-    }),
+    availProductInfo: PropTypes.arrayOf(
+      PropTypes.shape({
+        productname: PropTypes.string.isRequired,
+        productcode: PropTypes.number.isRequired,
+        productprice: PropTypes.number.isRequired,
+        producturl: PropTypes.string.isRequired,
+        productremain: PropTypes.number.isRequired,
+      })
+    ),
     itemEdit: PropTypes.bool.isRequired,
     itemChanged: PropTypes.bool.isRequired,
     cbitemEdit: PropTypes.func.isRequired,
+    cbitemChanged: PropTypes.func.isRequired,
   };
 
   state = { availProductInfo: this.props.availProductInfo };
@@ -23,34 +26,55 @@ class Productinfo extends React.Component {
     this.props.cbitemEdit(false);
   };
   itemChanged = (EO) => {
-    // this.props.itemChanged(true);
+    let value = EO.target.value;
+    let id = EO.target.id;
+    let valueChanged = this.state.availProductInfo;
+    valueChanged[this.props.itemSelected][id] = value;
+    this.setState({ availProductInfo: valueChanged });
+    this.props.cbitemChanged(true);
   };
 
   render() {
     return this.props.itemSelected != null ? (
       <div>
-        <h3>{this.props.availProductInfo.productname}</h3>
+        <h3>
+          {this.state.availProductInfo[this.props.itemSelected].productname}
+        </h3>
         {this.props.itemEdit == true ? (
           <div className="info">
             <span>Наименование</span>
             <input
-              value={this.props.availProductInfo.productname}
+              value={
+                this.state.availProductInfo[this.props.itemSelected].productname
+              }
               onChange={this.itemChanged}
+              id="productname"
             />
             <span>Цена</span>
             <input
-              value={this.props.availProductInfo.productprice}
+              value={
+                this.state.availProductInfo[this.props.itemSelected]
+                  .productprice
+              }
               onChange={this.itemChanged}
+              id="productprice"
             />
             <span>URL фото</span>
             <input
-              value={this.props.availProductInfo.producturl}
+              value={
+                this.state.availProductInfo[this.props.itemSelected].producturl
+              }
               onChange={this.itemChanged}
+              id="producturl"
             />
             <span>Остаток</span>
             <input
-              value={this.props.availProductInfo.productremain}
+              value={
+                this.state.availProductInfo[this.props.itemSelected]
+                  .productremain
+              }
               onChange={this.itemChanged}
+              id="productremain"
             />
             <button onClick={this.itemEdit}>Сохранить</button>
             <button onClick={this.itemEdit}>Отмена</button>
@@ -59,12 +83,15 @@ class Productinfo extends React.Component {
           <div className="info">
             <span>
               Название:
-              {this.props.availProductInfo.productname}
+              {this.state.availProductInfo[this.props.itemSelected].productname}
             </span>
             <br />
             <span>
               Остаток:
-              {this.props.availProductInfo.productremain}
+              {
+                this.state.availProductInfo[this.props.itemSelected]
+                  .productremain
+              }
             </span>
           </div>
         )}

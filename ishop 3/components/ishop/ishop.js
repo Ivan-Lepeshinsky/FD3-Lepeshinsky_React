@@ -75,11 +75,11 @@ class Ishop extends React.Component {
     let productInfo = (
       <Productinfo
         itemSelected={this.state.itemSelected}
-        availProductInfo={this.state.goodsAvailiable[this.state.itemSelected]}
+        availProductInfo={this.state.goodsAvailiable}
         itemEdit={this.state.itemEdit}
         itemChanged={this.state.itemChanged}
         cbitemEdit={this.cbitemEdit}
-        cbitemChanged={this.cbitemEdit}
+        cbitemChanged={this.cbitemChanged}
       />
     );
 
