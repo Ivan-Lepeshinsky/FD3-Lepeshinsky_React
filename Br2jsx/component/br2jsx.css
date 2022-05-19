@@ -1,0 +1,10 @@
+div {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.486);
+  font-size: 18px;
+}
