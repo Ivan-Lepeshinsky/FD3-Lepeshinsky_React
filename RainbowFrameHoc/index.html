@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colosframe</title>
+    <link rel="stylesheet" type="text/css" href="bundle.css" />
+  </head>
+  <body>
+    <!-- На основе примера с компонентом ColorFrame (VotesBlock480_children)
+    разработать новый проект RainbowFrame в папке RainbowFrame. Компонент
+    RainbowFrame должен получать в props массив цветов и строить несколько
+    вложенных рамочек, по одной на каждый цвет (в любом порядке). Внутри рамочек
+    должно быть то содержание, которое вложено в тег RainbowFrame. Прислать на
+    проверку на адрес loktev.alex.74@gmail.com ссылку на git-репозиторий и имя
+    папки с выполненным домашним заданием. Пример выполнения: render() { let
+    colors = ['red','orange', 'yellow','green', '#00BFFF', 'blue', 'purple'];
+    return (
+    <RainbowFrame colors="{colors}"> Hello! </RainbowFrame>
+    ); } -->
+
+    <!-- На основе проекта RainbowFrame разработать новый проект RainbowFrameHOC в
+    папке RainbowFrameHOC. 1. Разработать обычный React-компонент DoubleButton,
+    который рендерит две кнопки <input type="button" /> и между ними — текст,
+    пришедший в props.children. Компонент получает три пропса — caption1 и
+    caption2 это надписи на кнопках, cbPressed — коллбек, при нажатии на первую
+    кнопку коллбек вызывается с аргументом 1, при нажатии на вторую — с
+    аргументом 2. Разместите компонент на странице, заставьте его работать.
+    Тексты на кнопках и между кнопками могут быть любыми. Например: -->
+    <!-- <DoubleButton caption1="однажды" caption2="пору" cbPressed={ num => alert(num) } >в студёную зимнюю</DoubleButton> -->
+
+    <!-- 2. Разработать HOF withRainbowFrame, которая позволяет рендерить
+    оборачиваемый компонент внутри нескольких цветных рамок. -->
+
+    <div id="frame"></div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
